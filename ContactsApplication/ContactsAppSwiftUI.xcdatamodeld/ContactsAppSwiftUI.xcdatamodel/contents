@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22E261" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AddressInfo" representedClassName="AddressInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="addressToPerson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonInfo" inverseName="personToAddress" inverseEntity="PersonInfo"/>
+    </entity>
+    <entity name="BirthdateInfo" representedClassName="BirthdateInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="birthdate" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="birthdateToPerson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonInfo" inverseName="personToBirthdate" inverseEntity="PersonInfo"/>
+    </entity>
+    <entity name="ContactInfo" representedClassName="ContactInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="mobile" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="contactToPerson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonInfo" inverseName="personToContact" inverseEntity="PersonInfo"/>
+    </entity>
+    <entity name="DateInfo" representedClassName="DateInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="dateToPerson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonInfo" inverseName="personToDate" inverseEntity="PersonInfo"/>
+    </entity>
+    <entity name="EmailInfo" representedClassName="EmailInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="emailToPerson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonInfo" inverseName="personToEmail" inverseEntity="PersonInfo"/>
+    </entity>
+    <entity name="InstantMessageInfo" representedClassName="InstantMessageInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="messageMedium" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="messageToPerson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonInfo" inverseName="personToMessage" inverseEntity="PersonInfo"/>
+    </entity>
+    <entity name="PersonInfo" representedClassName="PersonInfo" syncable="YES">
+        <attribute name="company" optional="YES" attributeType="String"/>
+        <attribute name="firstName" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="lastName" optional="YES" attributeType="String"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <relationship name="personToAddress" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AddressInfo" inverseName="addressToPerson" inverseEntity="AddressInfo"/>
+        <relationship name="personToBirthdate" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BirthdateInfo" inverseName="birthdateToPerson" inverseEntity="BirthdateInfo"/>
+        <relationship name="personToContact" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ContactInfo" inverseName="contactToPerson" inverseEntity="ContactInfo"/>
+        <relationship name="personToDate" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DateInfo" inverseName="dateToPerson" inverseEntity="DateInfo"/>
+        <relationship name="personToEmail" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EmailInfo" inverseName="emailToPerson" inverseEntity="EmailInfo"/>
+        <relationship name="personToMessage" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="InstantMessageInfo" inverseName="messageToPerson" inverseEntity="InstantMessageInfo"/>
+        <relationship name="personToProfile" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SocialProfileInfo" inverseName="profileToPerson" inverseEntity="SocialProfileInfo"/>
+        <relationship name="personToRelated" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RelatedInfo" inverseName="relatedToPerson" inverseEntity="RelatedInfo"/>
+        <relationship name="personToUrl" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UrlInfo" inverseName="urlToPerson" inverseEntity="UrlInfo"/>
+    </entity>
+    <entity name="RelatedInfo" representedClassName="RelatedInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="related" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="relatedToPerson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonInfo" inverseName="personToRelated" inverseEntity="PersonInfo"/>
+    </entity>
+    <entity name="SocialProfileInfo" representedClassName="SocialProfileInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="profile" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="profileToPerson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonInfo" inverseName="personToProfile" inverseEntity="PersonInfo"/>
+    </entity>
+    <entity name="UrlInfo" representedClassName="UrlInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <relationship name="urlToPerson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonInfo" inverseName="personToUrl" inverseEntity="PersonInfo"/>
+    </entity>
+</model>
